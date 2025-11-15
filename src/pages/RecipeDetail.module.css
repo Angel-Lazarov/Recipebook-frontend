@@ -1,0 +1,285 @@
+/* src/pages/RecipeDetail.module.css */
+
+.recipeDetailContainer {
+  max-width: 700px;
+  width: 95%;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #eeebd9;
+  border-radius: 12px;
+  box-shadow: 0 0 3px 3px #eeebd9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipeCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #282427;
+  text-align: center;
+}
+
+.cardCategory {
+  font-size: 1rem;
+  color: #282427;
+}
+
+.ingredients ul {
+  padding-left: 20px;
+}
+
+.instructions p {
+  white-space: pre-wrap;
+}
+
+/* 🔹 Карусел със снимки */
+.imageCarousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  /* ✅ Поддържа пропорции вместо фиксирана височина */
+  overflow: hidden;
+  background-color: #eeebd9;
+  border-radius: 12px;
+}
+
+.carouselImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* border-radius: 12px; */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.carouselImage.show {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* 🔹 Навигационни бутони със символи < и > с фин контур */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #eeebd9;
+  font-size: 3rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 3;
+  padding: 0 8px;
+  text-shadow:
+    -1px -1px 0 #5a4a3c,
+    1px -1px 0 #5a4a3c,
+    -1px 1px 0 #5a4a3c,
+    1px 1px 0 #5a4a3c;
+  /* фин контур като белите точки */
+}
+
+.navButton:first-of-type {
+  left: 8px;
+}
+
+.navButton:last-of-type {
+  right: 8px;
+}
+
+.navButton:active {
+  transform: translateY(-48%) scale(0.92);
+  opacity: 0.9;
+}
+
+/* 🔹 Placeholder за липсващи снимки */
+.placeholder {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+}
+
+/* Подредба на бутоните */
+.cardFooter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+  gap: 25%;
+  flex-wrap: wrap;
+}
+
+.backButton,
+.editButton {
+  flex: none;
+  width: 120px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 0.1px solid #282427;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #eeebd9;
+  background-color: #282427;
+}
+
+.backButton:hover,
+.editButton:hover {
+  background-color: #eeebd9;
+   color: #282427;
+   border: 0.1px solid #282427;
+
+}
+
+.deleteButton {
+  flex: none;
+  width: 120px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #eeebd9;
+  background-color: #d9534f;
+}
+
+.deleteButton:hover {
+  background-color: #c9302c;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.dateAuthor {
+  font-size: 0.9rem;
+  color: #282427;
+  margin-top: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+/* 🔹 Индикатори под снимките — бели с контур */
+.imageIndicators {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  z-index: 4;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #282427;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.indicator.active {
+  background-color: #fff;
+  border-color: #282427;
+  transform: scale(1.2);
+}
+
+/* Респонсив за мобилни устройства */
+@media (max-width: 480px) {
+
+  .cardFooter {
+    flex-direction: row;
+    /* бутоните на един ред, ако има място */
+    flex-wrap: wrap;
+    /* ако не стигне мястото, автоматично пада на следващ ред */
+    justify-content: center;
+    gap: 12px;
+    /* хоризонтално */
+  }
+
+  .backButton,
+  .editButton,
+  .deleteButton {
+    width: 120px;
+  }
+
+  .actionButtons {
+    gap: 12px;
+    flex-direction: row;
+    /* бутоните Редактирай/Изтрий на един ред */
+  }
+
+  .navButton {
+    font-size: 2.5rem;
+    /* по-малки стрелки на мобилни */
+    padding: 0 4px;
+  }
+
+  .carouselImage {
+    max-height: 300px;
+  }
+
+  .imageCarousel {
+    height: 300px;
+  }
+}
+
+@media (max-width: 320px) {
+  .actionButtons {
+    flex-direction: column;
+    /* пада на нов ред вертикално */
+    gap: 10px;
+    width: 100%;
+    /* бутони да се разтягат до ширината на контейнера */
+    align-items: center;
+    /* центриране на бутоните */
+  }
+
+  .backButton,
+  .editButton,
+  .deleteButton {
+    width: 100%;
+    /* растат до ширината на родителя */
+    max-width: 120px;
+    /* запазваме максимум ширината на по-големи екрани */
+  }
+}
+
+@media (min-width: 481px) and (max-width: 612px) {
+  .cardFooter {
+    flex-wrap: wrap;
+    /* за да падат бутоните на втори ред */
+    row-gap: 10px;
+    /* вертикално разстояние между редовете */
+    justify-content: center;
+    /* центриране на бутоните */
+  }
+}

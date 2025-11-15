@@ -1,0 +1,109 @@
+/* src/pages/Profile.module.css */
+/* Описание: Стилове за страницата на профила. Картата лежи върху Layout фон и е полупрозрачна. */
+
+.profilePage {
+  max-width: 500px; /* ограничаваме ширината на картата */
+  margin: 2rem auto; /* центриране и отстъп отгоре */
+  padding: 2rem; /* вътрешен отстъп */
+  background: rgba(255, 255, 255, 0.95); /* почти бял, леко прозрачен фон */
+  border-radius: 16px; /* закръглени ъгли */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08); /* лек сянка */
+  transition: all 0.3s ease; /* плавна анимация при промени */
+}
+
+.profilePage h2 {
+  text-align: center; /* центриране на заглавието */
+  color: #222; /* тъмен текст */
+  margin-bottom: 1.5rem; /* отстъп отдолу */
+}
+
+.profileForm,
+.passwordForm {
+  display: flex; /* flex контейнер */
+  flex-direction: column; /* вертикално подреждане */
+  gap: 1rem; /* разстояние между input полета */
+}
+
+.profilePage label {
+  display: flex; /* flex за label + input */
+  flex-direction: column; /* вертикално подреждане */
+  font-weight: 500; /* средно удебелен текст */
+  color: #333; /* тъмен текст */
+}
+
+.profilePage input {
+  margin-top: 0.4rem; /* малко разстояние от label */
+  padding: 0.6rem 0.8rem; /* вътрешен отстъп */
+  border: 1px solid #ccc; /* светъл border */
+  border-radius: 8px; /* закръглени ъгли */
+  font-size: 1rem; /* размер на текста */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* плавен ефект при фокус */
+}
+
+.profilePage input:focus {
+  border-color: #4a90e2; /* акцент при фокус */
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* леко сияние */
+  outline: none; /* премахваме outline */
+}
+
+.profilePage button {
+  background-color: #4a90e2; /* основен цвят на бутоните */
+  color: white; /* бял текст */
+  padding: 0.7rem 1.2rem; /* вътрешен отстъп */
+  font-size: 1rem;
+  font-weight: 600;
+  border: none; /* без border */
+  border-radius: 10px; /* закръглени ъгли */
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.1s ease; /* плавна анимация */
+}
+
+.profilePage button:hover:not(:disabled) {
+  background-color: #357ab8; /* hover ефект */
+  transform: translateY(-1px); /* леко повдигане */
+}
+
+.profilePage button:disabled {
+  opacity: 0.6; /* намалена прозрачност */
+  cursor: not-allowed; /* курсор за забранено */
+}
+
+.successMsg {
+  text-align: center;
+  color: #2ecc71; /* зелен цвят за успех */
+  font-weight: 500;
+  opacity: 0; /* първоначално невидим */
+  animation: fadeIn 0.4s ease forwards; /* плавно показване */
+}
+
+.loader {
+  text-align: center; /* центриране на текста */
+  margin-top: 4rem;
+  font-size: 1.2rem;
+  color: #666; /* сив текст */
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd; /* лека линия */
+  margin: 2rem 0; /* отстъп отгоре и отдолу */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Респонсив */
+@media (max-width: 600px) {
+  .profilePage {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}

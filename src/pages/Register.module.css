@@ -1,0 +1,78 @@
+/* src/pages/Register.module.css */
+
+/* Основен контейнер на формата за регистрация */
+.registerContainer {
+max-width: 400px; /* ограничаваме ширината */
+margin: 2rem auto; /* центрираме по хоризонтала и отгоре */
+padding: 2rem; /* вътрешен отстъп */
+border-radius: 12px; /* закръглени ъгли */
+border: 1px solid #d1c7b2; /* същата рамка като при картите */
+background-color: #efe6dc; /* бежов фон за консистентност */
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* лека сянка */
+display: flex;
+flex-direction: column; /* вертикално подреждане */
+gap: 1.5rem; /* разстояние между елементите */
+}
+
+.title {
+margin: 0 0 1.5rem 0;
+font-size: 1.8rem;
+text-align: center;
+color: #282427;
+}
+
+.form {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.formGroup {
+display: flex;
+flex-direction: column;
+gap: 0.3rem;
+color: #282427;
+font-weight: 500;
+}
+
+.input {
+padding: 0.7rem;
+border: 1px solid #cbbca5; /* съвпада с RecipeCard */
+border-radius: 8px;
+width: 100%;
+background-color: #f7f2eb; /* лек кремов фон */
+color: #282427;
+font-size: 1rem;
+box-sizing: border-box;
+text-align: center;
+transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+border-color: #7a5f45;
+box-shadow: 0 0 0 2px rgba(122, 95, 69, 0.15);
+outline: none;
+}
+
+.button {
+padding: 0.8rem;
+background-color: #4b4837;
+color: #fff;
+border: none;
+border-radius: 8px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.2s, transform 0.1s;
+}
+
+.button:hover {
+background-color: #282427;
+transform: translateY(-1px);
+}
+
+.button:disabled {
+background-color: #cbbca5; /* изключен бутон */
+color: #f2f2f2;
+cursor: not-allowed;
+transform: none;
+}

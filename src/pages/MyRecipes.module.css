@@ -1,0 +1,27 @@
+/* src/pages/MyRecipes.module.css */
+
+.gridWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gridWrapper > * {
+  flex: 0 1 280px; /* всяка карта минимално 280px, може да се разтегне */
+}
+
+.message {
+  max-width: 640px;
+  margin: 2rem auto;
+  text-align: center;
+  color: #eeebd9;
+}
+
+@media (max-width: 619px) {
+  .gridWrapper {
+    justify-content: center; /* центрира картата */
+  }
+}

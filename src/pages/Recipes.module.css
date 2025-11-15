@@ -1,0 +1,75 @@
+/* src/pages/Recipes.module.css */
+
+.filtersContainer {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 20px 0; /* само вертикален padding */
+  background-color: #eeebd9;
+  border: 1px solid #eeebd9;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center; /* центриране на input/select */
+  align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.filtersContainer h2 {
+  width: 100%;
+  text-align: center;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  color: #282427;
+}
+
+.filterItem {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 180px;
+  align-items: center; /* центрира input/select */
+}
+
+.filterItem input,
+.filterItem select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbbca5;
+  background-color: #f7f2eb;
+  color: #4a4a4a;
+  font-size: 16px;
+  width: 100%;
+  max-width: 250px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.gridWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gridWrapper > * {
+  flex: 0 1 280px; /* всяка карта минимално 280px, може да се разтегне */
+}
+
+.message {
+  max-width: 640px;
+  margin: 2rem auto;
+  text-align: center;
+  color: #eeebd9;
+}
+
+@media (max-width: 619px) {
+  .gridWrapper {
+    justify-content: center; /* центрира картата */
+  }
+}
+

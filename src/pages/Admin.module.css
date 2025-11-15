@@ -1,0 +1,87 @@
+/* src/pages/Admin.module.css */
+/* ========================================================================
+   Стилове за страницата на администратора (AdminPage)
+   - Прилагат се само вътре в .container
+   ======================================================================== */
+
+.container {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.container .title {
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  color: var(--text-color, #222);
+}
+
+.container .toolbar {
+  margin-bottom: 12px;
+}
+
+/* 🔒 Само бутоните в админ страницата */
+.container .button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #4a90e2;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+.container .button:hover:not(:disabled) {
+  background-color: #357ab8;
+  transform: translateY(-1px);
+}
+
+.container .button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Таблица само за админ страницата */
+.container .tableWrapper {
+  overflow-x: auto;
+}
+
+.container .table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg, #fff);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.container .table th,
+.container .table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  color: var(--text-color, #333);
+}
+
+.container .table th {
+  background-color: #f7f7f7;
+  font-weight: 600;
+}
+
+.container .table tr:hover td {
+  background-color: #fafafa;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .container {
+    padding: 12px;
+  }
+
+  .container .table th,
+  .container .table td {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+}

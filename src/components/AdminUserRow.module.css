@@ -1,0 +1,59 @@
+/* src/components/AdminUserRow.module.css */
+/* ==========================================================================
+   Стилове само за компонент AdminUserRow (ред в таблицата на админа)
+   - Всички елементи са ограничени в .row
+   ========================================================================== */
+
+.row {
+  transition: background-color 0.2s ease;
+}
+
+.row:hover {
+  background-color: #fafafa;
+}
+
+/* ID клетка — малък моноширок текст */
+.row .id {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Dropdown за ролята */
+.row select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.row select:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+  outline: none;
+}
+
+/* Само бутона в реда на таблицата */
+.row .saveButton {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #4a90e2;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+.row .saveButton:hover:not(:disabled) {
+  background-color: #357ab8;
+  transform: translateY(-1px);
+}
+
+.row .saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

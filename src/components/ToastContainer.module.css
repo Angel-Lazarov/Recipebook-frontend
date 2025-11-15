@@ -1,0 +1,51 @@
+/* src/ components/ToastContainer.module.css */
+/* ToastContainer.module.css */
+
+.toastWrapper {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.toast {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* различен фон за различните типове */
+.success {
+  background-color: #4caf50; /* зелено */
+}
+
+.error {
+  background-color: #f44336; /* червено */
+}
+
+.info {
+  background-color: #2196f3; /* синьо */
+}
+
+.warning {
+  background-color: #ff9800; /* оранжево */
+}
+
+/* анимация при показване */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 0.95;
+  }
+}

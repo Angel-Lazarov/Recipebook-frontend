@@ -1,0 +1,219 @@
+/* src/pages/EditRecipe.module.css */
+
+/* Контейнер за цялата форма */
+.addRecipeContainer {
+  max-width: 600px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #eeebd9;
+  border-radius: 12px;
+  box-shadow: 0 0 5px 5px #eeebd9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Самата форма */
+.addRecipeForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Групи от полета във формата */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Стил на етикетите */
+.addRecipeForm label {
+  font-weight: 700;
+  color: #282427;
+  font-size: 1.2rem;
+}
+
+/* Полета за въвеждане, селект и textarea */
+.addRecipeForm input,
+.addRecipeForm select,
+.addRecipeForm textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e0d6cc;
+  border-radius: 8px;
+  background-color: #fff8f2;
+  font-size: 16px;
+  color: #282427;
+  box-sizing: border-box;
+}
+
+.addRecipeForm input:focus,
+.addRecipeForm select:focus,
+.addRecipeForm textarea:focus {
+  outline: none;
+  border-color: #282427;
+  box-shadow: 0 0 4px rgba(40, 36, 39, 0.5);
+}
+
+.addRecipeForm textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.addRecipeForm small {
+  font-size: 12px;
+  color: #282427;
+}
+
+/* Поле за временна категория */
+.tempCategory {
+  margin-top: 4px;
+}
+
+/* Контейнер за визуализация на изображения */
+.imagePreviewContainer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Обвивка за всяка снимка */
+.imageWrapper {
+  position: relative;
+  /* родител за absolute бутони */
+  display: inline-block;
+}
+
+/* Стил за самите изображения */
+.previewImage {
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Общ стил за бутоните върху снимката */
+.imageWrapper .imageBtn {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  z-index: 5;
+  transition: none;
+}
+
+.imageWrapper .imageBtn svg {
+  width: 16px;
+  height: 16px;
+  stroke: #282427;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.imageWrapper .imageBtn:hover {
+  background-color: #eeebd9;
+}
+
+/* Позициониране на бутоните върху снимките */
+.imageWrapper .removeImageBtn {
+  top: 6px;
+  right: 6px;
+}
+
+.imageWrapper .replaceImageBtn {
+  top: 6px;
+  left: 6px;
+}
+
+/* Стил за бутон "Добави снимка" */
+.addImageButton {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 1px solid #e0d6cc;
+  background-color: #4b4837;
+  color: #eeebd9;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.addImageButton:hover {
+  background-color: #282427;
+  color: #eeebd9;
+}
+
+/* Контейнер за бутоните "Запази" и "Отказ" */
+.formButtons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+  gap: 25%;
+}
+
+.formButtons button {
+  flex: none;
+  width: 120px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #eeebd9;
+}
+
+.formButtons button[type="submit"] {
+  background-color: #4b4837;
+}
+
+.formButtons button[type="submit"]:hover {
+  background-color: #282427;
+}
+
+.formButtons button[type="button"] {
+  background-color: #4b4837;
+}
+
+.formButtons button[type="button"]:hover {
+  background-color: #282427;
+}
+
+/* Мобилен дизайн */
+@media (max-width: 480px) {
+  .addRecipeContainer {
+    padding: 16px;
+  }
+
+  .formButtons {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .formButtons button {
+    width: 100%;
+  }
+}

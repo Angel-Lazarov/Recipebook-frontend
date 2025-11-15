@@ -1,0 +1,15 @@
+/* src/App.module.css */
+/* Минимални стилове за main container (няма да маскират фонa) */
+
+.mainContainer {
+  max-width: 1200px;   /* удобна ширина за четене */
+  margin: 0 auto;      /* центриране по хоризонтала */
+  padding: 2rem;       /* вътрешен отстъп */
+  box-sizing: border-box;
+
+  /* ВАЖНО: не задаваме background-color: white;
+     не задаваме border-radius тук — оставяме фонa на Layout видим */
+  background: transparent;
+  border-radius: 0;
+  min-height: auto; /* не форсираме 100vh тук — Layout управлява височината */
+}
