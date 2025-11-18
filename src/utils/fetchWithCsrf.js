@@ -4,7 +4,9 @@ let csrfToken = null;
 
 // 🔹 Взимаме CSRF токена веднъж при стартиране на приложението
 export async function initCsrf() {
-  const res = await fetch("https://localhost:3443/api/csrf-token", {
+  // използваме VITE_BACKEND_URL от env
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+  const res = await fetch(`${BASE_URL}/csrf-token`, {
     credentials: "include", // важно! праща cookie-то към сървъра
   });
   const data = await res.json();
@@ -26,10 +28,10 @@ export async function fetchWithCsrf(url, options = {}) {
   // };
 
   const headers = {
-  ...(options.body instanceof FormData ? {} : { "Content-Type": "application/json" }),
-  "X-CSRF-Token": csrfToken,
-  ...(options.headers || {}),
-};
+    ...(options.body instanceof FormData ? {} : { "Content-Type": "application/json" }),
+    "X-CSRF-Token": csrfToken,
+    ...(options.headers || {}),
+  };
 
   const response = await fetch(url, {
     ...options,

@@ -2,7 +2,8 @@
 
 import { fetchWithCsrf } from "../utils/fetchWithCsrf.js";
 
-const BASE_URL = "https://localhost:3443/api";
+// const BASE_URL = "https://localhost:3443/api";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;;
 
 /**
  * apiRequest
