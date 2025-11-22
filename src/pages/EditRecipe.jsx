@@ -17,7 +17,7 @@ export default function EditRecipe() {
   const { user } = useAuth();
   const titleRef = useRef(null);
   const fileInputRef = useRef(null);
-  const PLACEHOLDER_URL = "https://placehold.co/200x150/cccccc/ffffff?text=Без+снимка";
+  // const PLACEHOLDER_URL = "https://placehold.co/200x150/cccccc/ffffff?text=Без+снимка";
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -55,8 +55,11 @@ export default function EditRecipe() {
         setIngredients((data.ingredients || []).join(", "));
         setInstructions(data.instructions || "");
 
-        const imgs = (data.images && data.images.length > 0 ? data.images : [PLACEHOLDER_URL]);
-        setExistingImages(imgs);
+        // const imgs = (data.images && data.images.length > 0 ? data.images : [PLACEHOLDER_URL]);
+        // setExistingImages(imgs);
+
+        // Взимаме реалните снимки от базата, без placeholder
+        setExistingImages(Array.isArray(data.images) ? data.images : []);
 
         const recipes = await apiRequest("/recipes", "GET");
         const categories = Array.from(
@@ -248,11 +251,16 @@ export default function EditRecipe() {
         <div className={styles.formGroup}>
           <label>Снимки</label>
           <div className={styles.imagePreviewContainer}>
+
+            {existingImages.length + newImages.length === 0 && (
+              <div className={styles.placeholder}>Няма снимка</div>
+            )}
+
             {existingImages.map((url, idx) => (
               <div className={styles.imageWrapper} key={url}>
                 <img src={url} alt={`Preview ${idx}`} className={styles.previewImage} />
                 <button type="button" className={`${styles.imageBtn} ${styles.removeImageBtn}`} onClick={() => handleRemoveExisting(url)} disabled={saving}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
                 </button>
               </div>
             ))}
@@ -261,14 +269,14 @@ export default function EditRecipe() {
               <div className={styles.imageWrapper} key={img.url}>
                 <img src={img.url} alt={`Preview new ${idx}`} className={styles.previewImage} />
                 <button type="button" className={`${styles.imageBtn} ${styles.removeImageBtn}`} onClick={() => handleRemoveNew(img)} disabled={saving}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
                 </button>
               </div>
             ))}
           </div>
 
           <input type="file" ref={fileInputRef} style={{ display: "none" }} multiple accept="image/*"
-            onChange={handleNewFiles} disabled={saving || !canAddMoreImages}/>
+            onChange={handleNewFiles} disabled={saving || !canAddMoreImages} />
           <button type="button" onClick={() => fileInputRef.current?.click()} className={styles.addImageButton} disabled={saving || !canAddMoreImages}>
             ➕ Добави снимка
           </button>
