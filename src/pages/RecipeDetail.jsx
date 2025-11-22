@@ -82,7 +82,14 @@ export default function RecipeDetail() {
     });
   };
 
-  const currentImage = recipe?.images?.length ? recipe.images[currentImageIndex] : null;
+  // const currentImage = recipe?.images?.length ? recipe.images[currentImageIndex] : null;
+
+  // 🔹 Добавен placeholder URL за дефолтна снимка
+  const PLACEHOLDER_URL = "https://placehold.co/300x200/cccccc/ffffff?text=Без+снимка";
+
+  // 🔹 Използваме placeholder, ако няма реални снимки
+  const currentImage = recipe?.images?.length ? recipe.images[currentImageIndex] : PLACEHOLDER_URL;
+  const images = recipe?.images?.length ? recipe.images : [PLACEHOLDER_URL]; // за индикаторите
 
   return (
     <div className={styles.recipeDetailContainer}>
@@ -100,30 +107,29 @@ export default function RecipeDetail() {
           <p>{recipe.instructions}</p>
         </div>
 
-        {currentImage ? (
-          <div className={styles.imageCarousel}>
-            <button type="button" className={styles.navButton} onClick={prevImage} aria-label="Предишна снимка">
-              &lt;
-            </button>
+        {/* 🔹 Carousel с placeholder */}
+        <div className={styles.imageCarousel}>
+          <button type="button" className={styles.navButton} onClick={prevImage} aria-label="Предишна снимка">
+            &lt;
+          </button>
 
-            <img key={fadeKey} src={currentImage}
-              alt={`${recipe.title} (${currentImageIndex + 1}/${recipe.images.length})`}
-              className={`${styles.carouselImage} ${styles.show}`} />
+          <img key={fadeKey} src={currentImage}
+            alt={`${recipe.title} (${currentImageIndex + 1}/${images.length})`}
+            className={`${styles.carouselImage} ${styles.show}`} />
 
-            <button type="button" className={styles.navButton} onClick={nextImage} aria-label="Следваща снимка">
-              &gt;
-            </button>
+          <button type="button" className={styles.navButton} onClick={nextImage} aria-label="Следваща снимка">
+            &gt;
+          </button>
 
-            <div className={styles.imageIndicators}>
-              {recipe.images.map((_, idx) => (
-                <span key={idx}
-                  className={`${styles.indicator} ${idx === currentImageIndex ? styles.active : ""}`}
-                  onClick={() => { setCurrentImageIndex(idx); setFadeKey(k => k + 1); }}
-                />
-              ))}
-            </div>
+          <div className={styles.imageIndicators}>
+            {images.map((_, idx) => (
+              <span key={idx}
+                className={`${styles.indicator} ${idx === currentImageIndex ? styles.active : ""}`}
+                onClick={() => { setCurrentImageIndex(idx); setFadeKey(k => k + 1); }}
+              />
+            ))}
           </div>
-        ) : <div className={styles.placeholder}>Няма снимки</div>}
+        </div>
 
         <div className={styles.cardFooter}>
           <button className={styles.backButton} onClick={handleBack}>Назад</button>
