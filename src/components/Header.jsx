@@ -105,12 +105,10 @@ export default function Header() {
                 Добави рецепта
               </a>
 
-              {profile ? (
+              {profile && (
                 <a href="/profile" className={styles.userName}>
-                  Здравей, {profile.username || profile.email}!
+                  Здравей, {profile.username}!
                 </a>
-              ) : (
-                <span className={styles.userName}>Здравей!</span>
               )}
 
               <button className={styles.logoutButton} onClick={handleLogout}>
