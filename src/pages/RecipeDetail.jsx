@@ -33,6 +33,7 @@ export default function RecipeDetail() {
     } catch (err) {
       console.error("Failed to fetch recipe:", err);
       showToast.error("❌ Рецептата не е намерена!");
+      setRecipe(null); // <- добавяме явно
     } finally {
       setLoading(false);
     }
@@ -41,6 +42,18 @@ export default function RecipeDetail() {
   useEffect(() => { fetchRecipe(); }, [fetchRecipe]);
 
   if (loading || authLoading) return <p className={styles.message}>Зареждане на рецептата...</p>;
+
+  // 🔹 Нов fallback, ако рецептата не е намерена
+  if (!recipe) {
+    return (
+      <div className={styles.recipeDetailContainer}>
+        <p className={styles.message}>❌ Рецептата не е намерена!</p>
+        <button className={styles.backButton} onClick={() => navigate("/recipes")}>
+          Назад към рецепти
+        </button>
+      </div>
+    );
+  }
 
   const handleBack = () => navigate(isAuthor ? "/recipes/mine" : "/recipes");
   const handleEdit = () => navigate(`/recipes/${recipe.id}/edit`);
