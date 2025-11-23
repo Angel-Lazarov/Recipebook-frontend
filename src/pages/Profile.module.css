@@ -111,8 +111,6 @@ hr {
 /* wrapper за пароли */
 .passwordWrapper {
   position: relative;
-  display: flex;
-  align-items: center; /* вертикално центриране на input и иконка */
 }
 
 /* input полета за парола */
@@ -133,7 +131,7 @@ hr {
   right: 10px;
   top: 0;
   bottom: 0;
-  margin: auto; /* вертикално центриране в рамките на input-а */
+  margin-top: 0.4rem; /* компенсира margin-top на input-а */
   width: 26px;
   height: 26px;
   cursor: pointer;
