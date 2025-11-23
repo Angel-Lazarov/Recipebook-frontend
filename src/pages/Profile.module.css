@@ -109,26 +109,26 @@ hr {
 }
 
 .passwordWrapper {
-  position: relative; 
+  position: relative;
 }
 
 .passwordWrapper input {
   width: 100%;
-  padding: 0.6rem 2.5rem 0.6rem 0.8rem; /* padding-right достатъчно за иконката вътре */
+  padding: 0.6rem 2.5rem 0.6rem 0.8rem; /* място за иконката */
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
-  margin-top: 0.4rem; /* запазваме отстоянието от label */
+  margin-top: 0.4rem; /* оставяме margin за label */
   box-sizing: border-box;
 }
 
 .eyeIcon {
   position: absolute;
-  top: 50%;
-  right: 8px;       /* малко разстояние от края */
+  top: 0;
+  right: 8px;
   width: 26px;
   height: 26px;
-  transform: translateY(-50%); /* вертикално центриране спрямо input */
+  margin-top: 0.4rem; /* точно колкото input-ът */
   cursor: pointer;
   opacity: 0.85;
   transition: opacity 0.15s ease;
