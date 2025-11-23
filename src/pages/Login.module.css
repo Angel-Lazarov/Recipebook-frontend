@@ -101,17 +101,19 @@ margin-top: 0.5rem;
 
 .passwordWrapper input {
   width: 100%;
-  padding-right: 45px; /* място за иконата */
+  padding-right: 45px; /* място за иконката */
+  box-sizing: border-box;
 }
 
 .eyeIcon {
   position: absolute;
-  top: 1.5px; /* точно както в примера */
-  right: 16.453125px;
+  top: 50%;                /* центриране по височина */
+  right: 16px;             /* малко разстояние от края */
   width: 26px;
   height: 26px;
   cursor: pointer;
   opacity: 0.85;
+  transform: translateY(-50%); /* вертикално центриране */
   transition: opacity 0.15s ease;
 }
 
