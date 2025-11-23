@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { apiRequest } from "../api/api.js";
-import styles from "./Login.module.css"; // използваме същия стил
+import styles from "./ResetPassword.module.css"; // използваме същия стил
 import { useToast } from "../context/ToastContext";
 
 export default function ResetPassword() {
@@ -22,7 +22,7 @@ export default function ResetPassword() {
       const data = await apiRequest(`/users/reset-password/${token}`, "POST", {
         newPassword,
       });
-      showToast.success(data.msg || "Пародата е сменена успешно!");
+      showToast.success(data.msg || "Паролата е сменена успешно!");
 
       // След успех, пренасочваме към login след кратка пауза
       setTimeout(() => {
@@ -40,7 +40,7 @@ export default function ResetPassword() {
       <h2 className={styles.title}>Смяна на парола</h2>
       <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
         
-        {/* 👇 Добавено: wrapper за иконката + полето */}
+        {/* 👇 Wrapper за input + иконата */}
         <div className={styles.passwordWrapper}>
           <input
             type={showPassword ? "text" : "password"}
@@ -52,9 +52,9 @@ export default function ResetPassword() {
             className={styles.input}
           />
 
-          {/* 👁 Иконката за показване/скриване */}
+          {/* 👁 Иконата — с правилния път */}
           <img
-            src={showPassword ? "/icons/eye-open.svg" : "/icons/eye-closed.svg"}
+            src={showPassword ? "/shown.svg" : "/hidden.svg"}
             alt="toggle password"
             className={styles.passwordIcon}
             onClick={() => setShowPassword((prev) => !prev)}
