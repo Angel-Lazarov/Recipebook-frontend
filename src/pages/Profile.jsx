@@ -143,13 +143,12 @@ export default function Profile() {
               onChange={handlePassChange}
               required
             />
-            <button
-              type="button"
-              className={styles.showPasswordBtn}
+            <img
+              src={showOld ? "/shown.svg" : "/hidden.svg"}
+              alt="Покажи/скрий"
+              className={styles.eyeIcon}
               onClick={() => setShowOld(!showOld)}
-            >
-              {showOld ? "🙈" : "👁"}
-            </button>
+            />
           </div>
         </label>
 
@@ -163,13 +162,12 @@ export default function Profile() {
               onChange={handlePassChange}
               required
             />
-            <button
-              type="button"
-              className={styles.showPasswordBtn}
+            <img
+              src={showNew ? "/shown.svg" : "/hidden.svg"}
+              alt="Покажи/скрий"
+              className={styles.eyeIcon}
               onClick={() => setShowNew(!showNew)}
-            >
-              {showNew ? "🙈" : "👁"}
-            </button>
+            />
           </div>
         </label>
 
@@ -183,13 +181,12 @@ export default function Profile() {
               onChange={handlePassChange}
               required
             />
-            <button
-              type="button"
-              className={styles.showPasswordBtn}
+            <img
+              src={showConfirm ? "/shown.svg" : "/hidden.svg"}
+              alt="Покажи/скрий"
+              className={styles.eyeIcon}
               onClick={() => setShowConfirm(!showConfirm)}
-            >
-              {showConfirm ? "🙈" : "👁"}
-            </button>
+            />
           </div>
         </label>
 

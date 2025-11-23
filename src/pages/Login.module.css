@@ -99,13 +99,22 @@ margin-top: 0.5rem;
   position: relative;
 }
 
-.showPasswordBtn {
+.passwordWrapper input {
+  width: 100%;
+  padding-right: 45px; /* място за иконата */
+}
+
+.eyeIcon {
   position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
+  top: 1.5px; /* точно както в примера */
+  right: 16.453125px;
+  width: 26px;
+  height: 26px;
   cursor: pointer;
-  font-size: 18px;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.eyeIcon:hover {
+  opacity: 1;
 }

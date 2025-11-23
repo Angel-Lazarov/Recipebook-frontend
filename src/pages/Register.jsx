@@ -96,13 +96,12 @@ export default function Register() {
               required
               autoComplete="new-password"
             />
-            <button
-              type="button"
-              className={styles.showPasswordBtn}
+            <img
+              src={showPassword ? "/shown.svg" : "/hidden.svg"}
+              alt="Покажи/скрий паролата"
+              className={styles.eyeIcon}
               onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? "🙈" : "👁"}
-            </button>
+            />
           </div>
         </div>
 
@@ -120,13 +119,12 @@ export default function Register() {
               required
               autoComplete="new-password"
             />
-            <button
-              type="button"
-              className={styles.showPasswordBtn}
+            <img
+              src={showPasswordConfirm ? "/shown.svg" : "/hidden.svg"}
+              alt="Покажи/скрий паролата"
+              className={styles.eyeIcon}
               onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}
-            >
-              {showPasswordConfirm ? "🙈" : "👁"}
-            </button>
+            />
           </div>
         </div>
 

@@ -24,13 +24,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // POST заявка към бекенда за логин
-      /* const response = await apiRequest("/auth/login", "POST", { email, password });
- 
-       login(response.userData); // задаваме userData в контекста */
       await apiRequest("/auth/login", "POST", { email, password });
-
-      // 2️⃣ Зареждаме пълния user от бекенда
       await login(); // loadUser() в контекста автоматично извиква /auth/me + /users/me
 
       showToast.success("✅ Успешно влизане!"); // показваме тост
@@ -70,14 +64,13 @@ export default function Login() {
             className={styles.input}
           />
 
-          {/* Бутонче за показване/скриване */}
-          <button
-            type="button"
-            className={styles.showPasswordBtn}
+          {/* Икона за показване/скриване */}
+          <img
+            src={showPassword ? "/shown.svg" : "/hidden.svg"}
+            alt="Покажи/скрий паролата"
+            className={styles.eyeIcon}
             onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? "🙈" : "👁"}
-          </button>
+          />
         </div>
 
         <button type="submit" disabled={loading} className={styles.button}>
