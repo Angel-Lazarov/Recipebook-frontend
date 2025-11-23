@@ -108,34 +108,29 @@ hr {
   }
 }
 
-/* wrapper за пароли */
 .passwordWrapper {
   position: relative;
 }
 
-/* input полета за парола */
 .passwordWrapper input {
   width: 100%;
-  padding: 0.6rem 0.8rem;
-  padding-right: 40px; /* място за иконката вътре */
+  padding: 0.6rem 0.8rem;      /* padding отдолу и отстрани */
+  padding-right: 45px;         /* място за иконката */
+  box-sizing: border-box;
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
-  box-sizing: border-box;
-  margin-top: 0.4rem; /* остава margin-top за label spacing */
 }
 
-/* иконка за показване/скриване */
 .eyeIcon {
   position: absolute;
-  right: 10px;
   top: 0;
-  bottom: 0;
-  margin-top: 0.4rem; /* компенсира margin-top на input-а */
+  right: 12px;
   width: 26px;
   height: 26px;
   cursor: pointer;
   opacity: 0.85;
+  padding-top: 0.6rem;         /* компенсира падинга на input-а, визуално центрира */
   transition: opacity 0.15s ease;
 }
 
