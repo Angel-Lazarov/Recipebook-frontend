@@ -96,25 +96,24 @@ margin-top: 0.5rem;
 }
 
 .passwordWrapper {
-  position: relative;
+  display: flex;          /* подравняваме съдържанието по ред */
+  align-items: center;    /* вертикално центриране на input и иконка */
+  position: relative;     /* нужна за absolute, ако искаме */
 }
 
 .passwordWrapper input {
-  width: 100%;
-  padding: 0.6rem 2.8rem 0.6rem 0.8rem; /* достатъчно място за иконата вдясно */
+  flex: 1;                /* input запълва оставащото пространство */
+  padding: 0.6rem 0.8rem; /* padding само за текст */
   font-size: 1rem;
-  line-height: 1.5rem; /* важен за вертикалното центриране на текста */
   border-radius: 8px;
+  border: 1px solid #ccc;
   box-sizing: border-box;
 }
 
 .eyeIcon {
-  position: absolute;
-  top: 50%;              /* центрира спрямо wrapper-а */
-  right: 10px;           /* място от края на input-а */
+  margin-left: -36px;     /* премества иконката над input-а */
   width: 26px;
   height: 26px;
-  transform: translateY(-50%); /* центриране спрямо височината на input */
   cursor: pointer;
   opacity: 0.85;
   transition: opacity 0.15s ease;
