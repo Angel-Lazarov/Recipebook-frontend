@@ -110,30 +110,32 @@ hr {
 
 .passwordWrapper {
   position: relative;
+  display: flex;
+  align-items: center; /* вертикално центриране на input и иконка */
 }
 
 .passwordWrapper input {
   width: 100%;
-  padding: 0.6rem 0.8rem;      /* padding отдолу и отстрани */
-  padding-right: 45px;         /* място за иконката */
-  box-sizing: border-box;
+  padding: 0.6rem 2.5rem 0.6rem 0.8rem; /* отдясно има място за иконката */
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .eyeIcon {
   position: absolute;
-  top: 0;
-  right: 12px;
-  width: 26px;
-  height: 26px;
+  right: 10px;           /* малко отстояние от края */
+  width: 24px;
+  height: 24px;
   cursor: pointer;
   opacity: 0.85;
-  padding-top: 0.6rem;         /* компенсира падинга на input-а, визуално центрира */
+  top: 50%;              /* центриране спрямо input-а */
+  transform: translateY(-50%);
   transition: opacity 0.15s ease;
 }
 
 .eyeIcon:hover {
   opacity: 1;
 }
+
