@@ -12,6 +12,8 @@ export default function Register() {
   const [email, setEmail] = useState(""); // имейл
   const [password, setPassword] = useState(""); // парола
   const [passwordConfirm, setPasswordConfirm] = useState(""); // повторение на паролата
+  const [showPassword, setShowPassword] = useState(false); // 👁 показване на парола
+  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false); // 👁 показване на повторението
   const [loading, setLoading] = useState(false); // индикатор за чакане
   const { showToast } = useToast();
   const navigate = useNavigate();
@@ -80,32 +82,52 @@ export default function Register() {
           />
         </div>
 
+        {/* Поле за парола + бутон за показване */}
         <div className={styles.formGroup}>
           <label htmlFor="password">Парола</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={styles.input}
-            required
-            autoComplete="new-password"
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={styles.input}
+              required
+              autoComplete="new-password"
+            />
+            <button
+              type="button"
+              className={styles.showPasswordBtn}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🙈" : "👁"}
+            </button>
+          </div>
         </div>
 
+        {/* Поле за повторение + бутон за показване */}
         <div className={styles.formGroup}>
           <label htmlFor="passwordConfirm">Повтори паролата</label>
-          <input
-            id="passwordConfirm"
-            name="passwordConfirm"
-            type="password"
-            value={passwordConfirm}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-            className={styles.input}
-            required
-            autoComplete="new-password"
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              id="passwordConfirm"
+              name="passwordConfirm"
+              type={showPasswordConfirm ? "text" : "password"}
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+              className={styles.input}
+              required
+              autoComplete="new-password"
+            />
+            <button
+              type="button"
+              className={styles.showPasswordBtn}
+              onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}
+            >
+              {showPasswordConfirm ? "🙈" : "👁"}
+            </button>
+          </div>
         </div>
 
         <button type="submit" disabled={loading} className={styles.button}>

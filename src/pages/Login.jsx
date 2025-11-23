@@ -11,6 +11,7 @@ export default function Login() {
   // Състояния за имейл, парола и зареждане
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // 👁 добавено
   const [loading, setLoading] = useState(false);
 
   const { login } = useAuth(); // контекст за автентикация
@@ -32,9 +33,7 @@ export default function Login() {
       // 2️⃣ Зареждаме пълния user от бекенда
       await login(); // loadUser() в контекста автоматично извиква /auth/me + /users/me
 
-
       showToast.success("✅ Успешно влизане!"); // показваме тост
-
       navigate("/recipes"); // пренасочваме към всички рецепти
     } catch (err) {
       showToast.error(err.message || "❌ Грешка при логин!");
@@ -57,16 +56,30 @@ export default function Login() {
           required
           className={styles.input}
         />
-        <input
-          type="password"
-          name="password"
-          autoComplete="current-password"
-          placeholder="Парола"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className={styles.input}
-        />
+
+        {/* Поле за парола + бутон за показване */}
+        <div className={styles.passwordWrapper}>
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            autoComplete="current-password"
+            placeholder="Парола"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className={styles.input}
+          />
+
+          {/* Бутонче за показване/скриване */}
+          <button
+            type="button"
+            className={styles.showPasswordBtn}
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "🙈" : "👁"}
+          </button>
+        </div>
+
         <button type="submit" disabled={loading} className={styles.button}>
           {loading ? "Влизане..." : "Вход"}
         </button>

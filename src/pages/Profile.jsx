@@ -11,6 +11,9 @@ export default function Profile() {
   const [profile, setProfile] = useState(null); // текущ потребител
   const [form, setForm] = useState({ username: "", email: "" }); // данни за редакция
   const [passwords, setPasswords] = useState({ oldPassword: "", newPassword: "", confirmNewPassword: "" });
+  const [showOld, setShowOld] = useState(false); // 👁 стара парола
+  const [showNew, setShowNew] = useState(false); // 👁 нова парола
+  const [showConfirm, setShowConfirm] = useState(false); // 👁 потвърждение
   const [saving, setSaving] = useState(false);
   const [changingPass, setChangingPass] = useState(false);
 
@@ -132,35 +135,62 @@ export default function Profile() {
 
         <label>
           Стара парола:
-          <input
-            type="password"
-            name="oldPassword"
-            value={passwords.oldPassword}
-            onChange={handlePassChange}
-            required
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              type={showOld ? "text" : "password"}
+              name="oldPassword"
+              value={passwords.oldPassword}
+              onChange={handlePassChange}
+              required
+            />
+            <button
+              type="button"
+              className={styles.showPasswordBtn}
+              onClick={() => setShowOld(!showOld)}
+            >
+              {showOld ? "🙈" : "👁"}
+            </button>
+          </div>
         </label>
 
         <label>
           Нова парола:
-          <input
-            type="password"
-            name="newPassword"
-            value={passwords.newPassword}
-            onChange={handlePassChange}
-            required
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              type={showNew ? "text" : "password"}
+              name="newPassword"
+              value={passwords.newPassword}
+              onChange={handlePassChange}
+              required
+            />
+            <button
+              type="button"
+              className={styles.showPasswordBtn}
+              onClick={() => setShowNew(!showNew)}
+            >
+              {showNew ? "🙈" : "👁"}
+            </button>
+          </div>
         </label>
 
         <label>
           Потвърди новата парола:
-          <input
-            type="password"
-            name="confirmNewPassword"
-            value={passwords.confirmNewPassword}
-            onChange={handlePassChange}
-            required
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              type={showConfirm ? "text" : "password"}
+              name="confirmNewPassword"
+              value={passwords.confirmNewPassword}
+              onChange={handlePassChange}
+              required
+            />
+            <button
+              type="button"
+              className={styles.showPasswordBtn}
+              onClick={() => setShowConfirm(!showConfirm)}
+            >
+              {showConfirm ? "🙈" : "👁"}
+            </button>
+          </div>
         </label>
 
         <button type="submit" disabled={changingPass}>

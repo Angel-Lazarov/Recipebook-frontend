@@ -107,3 +107,18 @@ hr {
     padding: 1.5rem;
   }
 }
+
+.passwordWrapper {
+  position: relative;
+}
+
+.showPasswordBtn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
