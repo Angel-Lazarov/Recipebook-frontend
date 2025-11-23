@@ -133,6 +133,7 @@ hr {
   top: 50%;              /* центриране спрямо input-а */
   transform: translateY(-50%);
   transition: opacity 0.15s ease;
+  margin-top: 4px;
 }
 
 .eyeIcon:hover {
