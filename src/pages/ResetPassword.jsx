@@ -9,6 +9,7 @@ import { useToast } from "../context/ToastContext";
 export default function ResetPassword() {
   const { token } = useParams();
   const [newPassword, setNewPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // 👈 добавено
   const [loading, setLoading] = useState(false);
   const { showToast } = useToast();
   const navigate = useNavigate(); // за редирект
@@ -18,8 +19,10 @@ export default function ResetPassword() {
     setLoading(true);
 
     try {
-      const data = await apiRequest(`/users/reset-password/${token}`, "POST", { newPassword });
-      showToast.success(data.msg || "Паролата е сменена успешно!");
+      const data = await apiRequest(`/users/reset-password/${token}`, "POST", {
+        newPassword,
+      });
+      showToast.success(data.msg || "Пародата е сменена успешно!");
 
       // След успех, пренасочваме към login след кратка пауза
       setTimeout(() => {
@@ -36,15 +39,28 @@ export default function ResetPassword() {
     <div className={styles.container}>
       <h2 className={styles.title}>Смяна на парола</h2>
       <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
-        <input
-          type="password"
-          name="newPassword"
-          placeholder="Нова парола"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          required
-          className={styles.input}
-        />
+        
+        {/* 👇 Добавено: wrapper за иконката + полето */}
+        <div className={styles.passwordWrapper}>
+          <input
+            type={showPassword ? "text" : "password"}
+            name="newPassword"
+            placeholder="Нова парола"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            required
+            className={styles.input}
+          />
+
+          {/* 👁 Иконката за показване/скриване */}
+          <img
+            src={showPassword ? "/icons/eye-open.svg" : "/icons/eye-closed.svg"}
+            alt="toggle password"
+            className={styles.passwordIcon}
+            onClick={() => setShowPassword((prev) => !prev)}
+          />
+        </div>
+
         <button type="submit" disabled={loading} className={styles.button}>
           {loading ? "Обработка..." : "Запази новата парола"}
         </button>
