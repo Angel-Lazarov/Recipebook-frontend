@@ -20,6 +20,7 @@ export default function AddRecipe() {
   const [tempCategory, setTempCategory] = useState("");
   const [previewUrls, setPreviewUrls] = useState([]);
   const [files, setFiles] = useState([]); // Съхраняваме реалните файлове
+  const [isMobile, setIsMobile] = useState(false); // Проверка за мобилно устройство
   const fileInputRef = useRef(null);
   const titleRef = useRef(null);
   const navigate = useNavigate();
@@ -27,6 +28,12 @@ export default function AddRecipe() {
 
   useEffect(() => {
     titleRef.current?.focus();
+  }, []);
+
+  // Проверка дали устройството е мобилно
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    setIsMobile(/android|iphone|ipad|ipod/i.test(userAgent));
   }, []);
 
   useEffect(() => {
@@ -203,6 +210,7 @@ export default function AddRecipe() {
           />
         </div>
 
+        {/* 👇 Бутон за добавяне на снимка с динамичен multiple */}
         <div className={styles.formGroup}>
           <button
             type="button"
@@ -215,7 +223,7 @@ export default function AddRecipe() {
             type="file"
             ref={fileInputRef}
             accept="image/*"
-            multiple
+            multiple={!isMobile} // ако е мобилно, multiple се маха
             style={{ display: "none" }}
             onChange={(e) => handleFilesChange(e.target.files)}
           />
