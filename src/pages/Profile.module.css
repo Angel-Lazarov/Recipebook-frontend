@@ -5,15 +5,15 @@
   max-width: 500px; /* ограничаваме ширината на картата */
   margin: 2rem auto; /* центриране и отстъп отгоре */
   padding: 2rem; /* вътрешен отстъп */
-  background: rgba(255, 255, 255, 0.95); /* почти бял, леко прозрачен фон */
-  border-radius: 16px; /* закръглени ъгли */
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08); /* лек сянка */
+  background-color: #eeebd9; /* фон като в AddRecipe */
+  border-radius: 12px; /* закръглени ъгли, като в AddRecipe */
+  box-shadow: 0 0 3px 3px #eeebd9; /* сянка като в AddRecipe */
   transition: all 0.3s ease; /* плавна анимация при промени */
 }
 
 .profilePage h2 {
   text-align: center; /* центриране на заглавието */
-  color: #222; /* тъмен текст */
+  color: #333; /* тъмен текст, като в AddRecipe */
   margin-bottom: 1.5rem; /* отстъп отдолу */
 }
 
@@ -34,33 +34,34 @@
 .profilePage input {
   margin-top: 0.4rem; /* малко разстояние от label */
   padding: 0.6rem 0.8rem; /* вътрешен отстъп */
-  border: 1px solid #ccc; /* светъл border */
+  border: 1px solid #e0d6cc; /* border като в AddRecipe */
   border-radius: 8px; /* закръглени ъгли */
+  background-color: #fff8f2; /* фон като в AddRecipe */
   font-size: 1rem; /* размер на текста */
+  color: #5a4a3c; /* текстов цвят като в AddRecipe */
   transition: border-color 0.2s ease, box-shadow 0.2s ease; /* плавен ефект при фокус */
 }
 
 .profilePage input:focus {
-  border-color: #4a90e2; /* акцент при фокус */
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* леко сияние */
   outline: none; /* премахваме outline */
+  border-color: #282427; /* като в AddRecipe focus */
+  box-shadow: 0 0 4px rgba(40, 36, 39, 0.5); /* като в AddRecipe */
 }
 
 .profilePage button {
-  background-color: #4a90e2; /* основен цвят на бутоните */
-  color: white; /* бял текст */
+  background-color: #4b4837; /* основен цвят като в AddRecipe */
+  color: #eeebd9; /* текстов цвят като в AddRecipe */
   padding: 0.7rem 1.2rem; /* вътрешен отстъп */
   font-size: 1rem;
   font-weight: 600;
-  border: none; /* без border */
-  border-radius: 10px; /* закръглени ъгли */
+  border: 1px solid #282427; /* като в AddRecipe */
+  border-radius: 8px; /* закръглени ъгли */
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.1s ease; /* плавна анимация */
+  transition: background-color 0.2s ease; /* плавна анимация */
 }
 
 .profilePage button:hover:not(:disabled) {
-  background-color: #357ab8; /* hover ефект */
-  transform: translateY(-1px); /* леко повдигане */
+  background-color: #282427; /* hover като в AddRecipe */
 }
 
 .profilePage button:disabled {
@@ -119,7 +120,9 @@ hr {
   padding: 0.6rem 2.5rem 0.6rem 0.8rem; /* отдясно има място за иконката */
   font-size: 1rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #e0d6cc; /* като в AddRecipe */
+  background-color: #fff8f2; /* като в AddRecipe */
+  color: #5a4a3c; /* като в AddRecipe */
   box-sizing: border-box;
 }
 
@@ -139,4 +142,3 @@ hr {
 .eyeIcon:hover {
   opacity: 1;
 }
-
