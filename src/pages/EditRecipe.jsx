@@ -17,7 +17,6 @@ export default function EditRecipe() {
   const { user } = useAuth();
   const titleRef = useRef(null);
   const fileInputRef = useRef(null);
-  // const PLACEHOLDER_URL = "https://placehold.co/200x150/cccccc/ffffff?text=Без+снимка";
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -34,7 +33,15 @@ export default function EditRecipe() {
   const [creatingCategory, setCreatingCategory] = useState(false);
   const [tempCategory, setTempCategory] = useState("");
 
-  useEffect(() => titleRef.current?.focus(), []);
+  const [isMobile, setIsMobile] = useState(false); // 👈 проверка за мобилно устройство
+
+  useEffect(() => {
+    titleRef.current?.focus();
+
+    // Проверка дали устройството е мобилно
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    setIsMobile(/android|iphone|ipad|ipod/i.test(userAgent));
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,10 +62,6 @@ export default function EditRecipe() {
         setIngredients((data.ingredients || []).join(", "));
         setInstructions(data.instructions || "");
 
-        // const imgs = (data.images && data.images.length > 0 ? data.images : [PLACEHOLDER_URL]);
-        // setExistingImages(imgs);
-
-        // Взимаме реалните снимки от базата, без placeholder
         setExistingImages(Array.isArray(data.images) ? data.images : []);
 
         const recipes = await apiRequest("/recipes", "GET");
@@ -145,7 +148,6 @@ export default function EditRecipe() {
     URL.revokeObjectURL(fileObj.url);
   };
 
-  // 🔹 Опростен submit синхронизиран с бекенда
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
@@ -156,10 +158,7 @@ export default function EditRecipe() {
       formData.append("ingredients", ingredients);
       formData.append("instructions", instructions);
 
-      // нови файлове
       newImages.forEach(fileObj => formData.append("newFiles", fileObj.file));
-
-      // изтрити съществуващи снимки
       removedExistingImages.forEach(url => formData.append("removedImages[]", url));
 
       await apiRequest(`/recipes/${id}`, "PUT", formData);
@@ -175,7 +174,6 @@ export default function EditRecipe() {
 
   const handleCancel = () => navigate(`/recipes/${id}`);
 
-  // Cleanup на blob URLs при unmount
   useEffect(() => {
     return () => {
       newImages.forEach(img => URL.revokeObjectURL(img.url));
@@ -248,6 +246,7 @@ export default function EditRecipe() {
           />
         </div>
 
+        {/* 👇 Бутон за добавяне на снимка с мобилна проверка */}
         <div className={styles.formGroup}>
           <label>Снимки</label>
           <div className={styles.imagePreviewContainer}>
@@ -275,10 +274,18 @@ export default function EditRecipe() {
             ))}
           </div>
 
-          <input type="file" ref={fileInputRef} style={{ display: "none" }} multiple accept="image/*"
-            onChange={handleNewFiles} disabled={saving || !canAddMoreImages} />
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            accept="image/*"
+            multiple={!isMobile} // ако е мобилно, multiple се маха
+            capture={isMobile ? "environment" : undefined} // мобилно: камера
+            onChange={handleNewFiles}
+            disabled={saving || !canAddMoreImages}
+          />
           <button type="button" onClick={() => fileInputRef.current?.click()} className={styles.addImageButton} disabled={saving || !canAddMoreImages}>
-            ➕ Добави снимка
+            {isMobile ? "📷 Добави снимка" : "➕ Добави снимка"}
           </button>
         </div>
 

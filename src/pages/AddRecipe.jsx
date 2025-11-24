@@ -217,7 +217,7 @@ export default function AddRecipe() {
             className={styles.addImageBtn}
             onClick={() => fileInputRef.current.click()}
           >
-            {isMobile ? "📷" : "➕ Добави снимка"}
+            {isMobile ? "📷 Добави снимка" : "➕ Добави снимка"}
           </button>
           <input
             type="file"
