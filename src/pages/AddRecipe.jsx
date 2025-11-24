@@ -223,6 +223,7 @@ export default function AddRecipe() {
             type="file"
             ref={fileInputRef}
             accept="image/*"
+            capture={isMobile ? "environment" : undefined} 
             multiple={!isMobile} // ако е мобилно, multiple се маха
             style={{ display: "none" }}
             onChange={(e) => handleFilesChange(e.target.files)}
